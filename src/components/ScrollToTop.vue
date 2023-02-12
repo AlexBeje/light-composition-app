@@ -33,6 +33,7 @@ function scrollToTop() {
   background: white;
   border: none;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   .arrow-rotated {
     transform: rotate(-90deg);
     color: black;
