@@ -5,7 +5,9 @@ import IconForward from '~icons/material-symbols/arrow-forward-ios-rounded';
 defineProps({
   id: Number,
   description: String,
+  title: String,
   exampleImageNumber: Number,
+  horizontalAxis: Boolean,
 });
 
 const itemOpened = ref(false);
@@ -18,7 +20,16 @@ function toggleItem() {
 <template>
   <div class="container">
     <div class="top-section" @click="toggleItem">
-      <img class="image" :src="'/images/' + id + '.jpeg'" />
+      <img
+        class="image"
+        :src="
+          '/images/' +
+          (horizontalAxis ? 'horizontalAxis/' : 'verticalAxis/') +
+          id +
+          '.jpeg'
+        "
+      />
+      <h1>{{ title }}</h1>
     </div>
     <div class="bottom-section" v-if="itemOpened">
       <div class="subtitle mb-1">
@@ -27,7 +38,14 @@ function toggleItem() {
       </div>
       <img
         class="large-image mb-1"
-        :src="'/images/' + id + '.' + index + '.jpeg'"
+        :src="
+          '/images/' +
+          (horizontalAxis ? 'horizontalAxis/' : 'verticalAxis/') +
+          id +
+          '.' +
+          index +
+          '.jpeg'
+        "
         v-for="index in exampleImageNumber"
         :key="index"
       />
@@ -54,7 +72,6 @@ function toggleItem() {
     width: 100%;
   }
 }
-
 .m-0 {
   margin: 0;
 }
@@ -62,25 +79,18 @@ function toggleItem() {
   margin-bottom: 1rem;
 }
 .container {
-  border-radius: 8px;
   overflow: hidden;
   .top-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #1c1c1e;
-    padding: 1rem;
+    background: white;
+    color: black;
     cursor: pointer;
+    padding: 1rem;
+    text-align: center;
+    h1 {
+      margin: 0.5rem 0 0 0;
+    }
     .image {
       width: 100%;
-      background: #39383d;
-      background-size: auto;
-      object-fit: cover;
-    }
-    .title {
-      flex: 1;
-      margin: 0 1rem;
-      font-weight: 500;
     }
   }
   .bottom-section {
