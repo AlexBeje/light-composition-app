@@ -6,14 +6,14 @@ import data from './data/compositionTechniques.json';
 
 <template>
   <div class="app-container">
-    <h1>Composition Rules</h1>
+    <h1>Eje Horizontal</h1>
     <div class="composition-rules">
       <CompositionRule
-        v-for="{ id, title, description } in data"
+        v-for="{ id, description, exampleImageNumber } in data"
         :id="id"
-        :title="title"
         :description="description"
         :key="id"
+        :exampleImageNumber="exampleImageNumber"
       />
     </div>
     <ScrollToTop />
