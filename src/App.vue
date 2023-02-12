@@ -1,30 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import CompositionRule from './components/CompositionRule.vue';
+import ScrollToTop from './components/ScrollToTop.vue';
+import data from './data/compositionTechniques.json';
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app-container">
+    <h1>Composition Rules</h1>
+    <div class="composition-rules">
+      <CompositionRule
+        v-for="{ id, title, description } in data"
+        :id="id"
+        :title="title"
+        :description="description"
+        :key="id"
+      />
+    </div>
+    <ScrollToTop />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style scoped lang="scss">
+h1 {
+  margin: 2rem 0 1rem 0;
+  font-weight: 700;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.app-container {
+  margin: 1rem;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.composition-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 </style>
